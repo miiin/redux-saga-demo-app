@@ -1,12 +1,19 @@
 import React from 'react';
+import useCounter from '../hooks/useCounter';
+import useCounterActions from '../hooks/useCounterActions';
 
 function Counter() {
+  const counterActions = useCounterActions();
+  const count = useCounter().count;
+  
   return (
     <div>
       <h1>Counter</h1>
-      <div>0</div>
-      <button>PLUS</button>
-      <button>MINUS</button>
+      <div>{count}</div>
+      <button onClick={() => counterActions.onPlus({})}>PLUS</button>
+      <button onClick={() => counterActions.onMinus()}>MINUS</button>
+      <button onClick={() => counterActions.onPlusRandom()}>PLUS RANDOM</button>
+      <button onClick={() => counterActions.onPlusAfterOneSeconds()}>PLUS AFTER ONE SECONDS</button>
     </div>
   )
 }
